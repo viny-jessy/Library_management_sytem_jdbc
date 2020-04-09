@@ -10,6 +10,6 @@ public interface UserJdbcService {
 	BookInformationJdbc searchById(int id);
 //	RequestInfo bookRequest(int userId,int bookId);
 	RequestInformationJdbc bookRequest(Admin_User_InformationJdbc userBean, BookInformationJdbc bookBean);
-	RequestInformationJdbc bookReturn(Admin_User_InformationJdbc userBean, BookInformationJdbc bookBean);
+	boolean bookReturn(int userId,int bookId);
 	
 }

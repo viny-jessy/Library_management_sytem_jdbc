@@ -3,6 +3,7 @@ package com.capgemini.librarymanagementsystemjdbc.dto;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Admin_User_InformationJdbc implements Serializable {
 
 	private int id;
@@ -12,6 +13,10 @@ public class Admin_User_InformationJdbc implements Serializable {
 	private String emailId;
 	private String password;
 	private String role;
+	private int noOfBooksBorrowed;
+	private int fine;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -54,7 +59,14 @@ public class Admin_User_InformationJdbc implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public int getNoOfBooksBorrowed() {
+		return noOfBooksBorrowed;
+	}
+	public void setNoOfBooksBorrowed(int noOfBooksBorrowed) {
+		this.noOfBooksBorrowed = noOfBooksBorrowed;
+	}
+	public double getFine() {
+		return fine;
+	}
 
-
-	
 }

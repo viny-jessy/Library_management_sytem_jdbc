@@ -1,5 +1,9 @@
 package com.capgemini.librarymanagementsystemjdbc.factory;
 
+
+
+import java.util.Date;
+
 import com.capgemini.librarymanagementsystemjdbc.dao.AdminJdbcDao;
 import com.capgemini.librarymanagementsystemjdbc.dao.AdminJdbcImplementation;
 import com.capgemini.librarymanagementsystemjdbc.dao.UserJdbcDao;
@@ -58,5 +62,10 @@ public class LMSJdbcFactory {
 
 		return new Admin_User_InformationJdbc();
 	}
+	
+	public static Date getDate() {
+		return new Date();
+	}
+
 
 }

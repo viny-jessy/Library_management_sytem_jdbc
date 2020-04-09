@@ -1,18 +1,22 @@
 package com.capgemini.librarymanagementsystemjdbc.dto;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Date;
-
+import java.sql.Date;
 
 public class RequestInformationJdbc implements Serializable{
 
 	private int requestId;
 	private int bookId;
 	private int userId;
-	private int bookName;
+	private String userName;
+	private String bookName;
 	private BookInformationJdbc bookBean;
 	private Admin_User_InformationJdbc userBean;
+	private Date issueDate;
+	private Date returnDate;
+	private Date expectedReturnDate;
+	
+	
 	public int getRequestId() {
 		return requestId;
 	}
@@ -31,10 +35,16 @@ public class RequestInformationJdbc implements Serializable{
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public int getBookName() {
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getBookName() {
 		return bookName;
 	}
-	public void setBookName(int bookName) {
+	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
 	public BookInformationJdbc getBookBean() {
@@ -48,6 +58,24 @@ public class RequestInformationJdbc implements Serializable{
 	}
 	public void setUserBean(Admin_User_InformationJdbc userBean) {
 		this.userBean = userBean;
+	}
+	public Date getIssueDate() {
+		return issueDate;
+	}
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
+	}
+	public Date getReturnDate() {
+		return returnDate;
+	}
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
+	}
+	public Date getExpectedReturnDate() {
+		return expectedReturnDate;
+	}
+	public void setExpectedReturnDate(Date expectedReturnDate) {
+		this.expectedReturnDate = expectedReturnDate;
 	}
 	
 	

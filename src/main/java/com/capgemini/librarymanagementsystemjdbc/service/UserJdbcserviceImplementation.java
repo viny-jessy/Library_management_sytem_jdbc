@@ -28,11 +28,8 @@ public class UserJdbcserviceImplementation implements UserJdbcService{
 	}
 
 	@Override
-	public RequestInformationJdbc bookReturn(Admin_User_InformationJdbc userBean, BookInformationJdbc bookBean) {
+	public boolean bookReturn(int userId, int bookId) {
 		
-		return user.bookReturn(userBean, bookBean);
+		return user.bookReturn(userId, bookId);
 	}
-
-	
-
 }

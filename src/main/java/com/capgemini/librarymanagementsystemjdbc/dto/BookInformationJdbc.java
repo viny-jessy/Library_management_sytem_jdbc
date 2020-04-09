@@ -1,9 +1,8 @@
 package com.capgemini.librarymanagementsystemjdbc.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
 
-
+@SuppressWarnings("serial")
 public class BookInformationJdbc implements Serializable{
 
 	private int slno;
@@ -12,9 +11,8 @@ public class BookInformationJdbc implements Serializable{
 	private String authorName;
 	private String publisher;
 	private String category;
-	private Date issueDate;
-	private Date returnDate;
-	private int fine;
+	private boolean isAvaliable;
+	
 	public int getSlno() {
 		return slno;
 	}
@@ -51,26 +49,5 @@ public class BookInformationJdbc implements Serializable{
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public Date getIssueDate() {
-		return issueDate;
-	}
-	public void setIssueDate(Date issueDate) {
-		this.issueDate = issueDate;
-	}
-	public Date getReturnDate() {
-		return returnDate;
-	}
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
-	}
-	public int getFine() {
-		return fine;
-	}
-	public void setFine(int fine) {
-		this.fine = fine;
-	}
-
 	
-
-
 }

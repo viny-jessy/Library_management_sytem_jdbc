@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.LinkedList;
 import java.util.Properties;
 import com.capgemini.librarymanagementsystemjdbc.dto.Admin_User_InformationJdbc;
 import com.capgemini.librarymanagementsystemjdbc.dto.BookInformationJdbc;
@@ -96,14 +95,11 @@ public class UserJdbcDaoImplementation implements UserJdbcDao {
 					
 					if(result!=0) {
 						
-						return requestInfo;
-						
+						return requestInfo;				
 						
 					}else {
 						return null;
-					}
-					
-					
+					}	
 				}
 			}
 			
@@ -113,12 +109,47 @@ public class UserJdbcDaoImplementation implements UserJdbcDao {
 
 		return null;
 	}
+	
+		@Override
+		public boolean bookReturn(int userId, int bookId) {
+			ResultSet rs=null;
+			PreparedStatement pstmt1=null;
+			try(FileInputStream fis=new FileInputStream("LibraryManagementSystemDataBase.properties")){
+				Properties properties=new Properties();
+				properties.load(fis);
+				Class.forName(properties.getProperty("path")).newInstance();
+				String dburl=properties.getProperty("dburl");
+				try(Connection connection=DriverManager.getConnection(dburl)){
+					
+					try(PreparedStatement pstmt=connection.prepareStatement(properties.getProperty("bookReturn"))){
+						pstmt.setInt(1, userId);
+						pstmt.setInt(2, bookId);
 
-	@Override
-	public RequestInformationJdbc bookReturn(Admin_User_InformationJdbc userBean, BookInformationJdbc bookBean) {
+						rs = pstmt.executeQuery();
+
+						if (rs.next() != false) {
+							int requestId = rs.getInt("requestId");
+							System.out.println("Request Id....." + requestId);
+
+						
+//							query = properties.getProperty("updateReturnDate");
+							pstmt1 = connection.prepareStatement(properties.getProperty("updateReturnDate"));
+							pstmt1.setInt(1, requestId);
+
+							int count = pstmt1.executeUpdate();
+							if (count != 0) {
+								return true;
+							}
+						}
+						
+					}
+				}
+			}catch(Exception e) {
+				throw new LibraryManagementJdbcExceptions("Book cannot be returned");
+			}
 		
-		return null;
-	}
+			return false;
+		}
 
 	
 }

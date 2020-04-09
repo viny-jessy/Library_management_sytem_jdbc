@@ -12,21 +12,21 @@ public class AdminJdbcServiceImplementation implements AdminJdbcService{
 	private AdminJdbcDao admindao = LMSJdbcFactory.getAdminJdbcDao();
 
 	@Override
-	public boolean addUser(Admin_User_InformationJdbc user1) {
+	public boolean enrollUser(Admin_User_InformationJdbc user1) {
 		
-		return admindao.addUser(user1);
+		return admindao.enrollUser(user1);
 	}
 
 	@Override
-	public Admin_User_InformationJdbc login(String emailId, String password) {
+	public Admin_User_InformationJdbc signIn(String emailId, String password) {
 		
-		return admindao.login(emailId, password);
+		return admindao.signIn(emailId, password);
 	}
 
 	@Override
-	public boolean addBook(BookInformationJdbc info) {
+	public boolean enrollBook(BookInformationJdbc info) {
 		
-		return admindao.addBook(info);
+		return admindao.enrollBook(info);
 	}
 
 	@Override
@@ -42,39 +42,40 @@ public class AdminJdbcServiceImplementation implements AdminJdbcService{
 	}
 
 	@Override
-	public BookInformationJdbc searchBook(int bookId) {
+	public BookInformationJdbc searchBookByBookId(int bookId) {
 	
-		return admindao.searchBook(bookId);
+		return admindao.searchBookByBookId(bookId);
 	}
 
 	@Override
-	public List<Admin_User_InformationJdbc> showUsers() {
+	public List<Admin_User_InformationJdbc> listOfUsers() {
 		
-		return admindao.showUsers();
+		return admindao.listOfUsers();
 	}
 
 	@Override
-	public List<BookInformationJdbc> showBooks() {
+	public List<BookInformationJdbc> listOfBooks() {
 		
-		return admindao.showBooks();
+		return admindao.listOfBooks();
 	}
 
 	@Override
-	public List<RequestInformationJdbc> showRequests() {
+	public List<RequestInformationJdbc> showAllUserRequests() {
 		
-		return admindao.showRequests();
+		return admindao.showAllUserRequests();
 	}
 
-	@Override
-	public boolean bookIssue(Admin_User_InformationJdbc user, BookInformationJdbc book) {
-		
-		return admindao.bookIssue(user, book);
-	}
 
 	@Override
-	public boolean isBookReceived(Admin_User_InformationJdbc user, BookInformationJdbc book) {
+	public boolean isBookReceived(int requestId) {
 	
-		return admindao.isBookReceived(user, book);
+		return admindao.isBookReceived(requestId);
+	}
+
+	@Override
+	public boolean bookIssue(int requestId) {
+		
+		return admindao.bookIssue(requestId);
 	}
 
 	
